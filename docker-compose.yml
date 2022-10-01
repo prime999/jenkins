@@ -1,26 +1,9 @@
-version: '3.1'
+version: '3.9'
 services:
-    php-apache-environment:
-        container_name: apachephp
-        build:
-            context: ./php
-            dockerfile: Dockerfile
-        depends_on:
-            - db
-        volumes:
-            - ./php/:/var/www/html/
-        ports:
-            - 80:80
-    db:
-        container_name: db
-        image: mysql
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: lVkYWB5gCxM52
-            MYSQL_DATABASE: phptest
-            MYSQL_USER: phptest
-            MYSQL_PASSWORD: lVkYWB5gCxM52
-        volumes:
-            - ./mysql-data/:/var/lib/mysql
-        ports:
-            - "3306:3306"
+  apache:
+    image: httpd:latest
+    container_name: my-apache-app
+    ports:
+    - '8080:80'
+    volumes:
+    - ./website:/usr/local/apache2/htdocs
