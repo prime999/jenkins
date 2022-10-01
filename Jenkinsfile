@@ -4,8 +4,8 @@ pipeline {
         stage("Run docker compose") {
             steps {
                 sh '''
-                docker compose up -d --wait
-                docker compose ps
+                sudo docker compose up -d --wait
+                sudo docker compose ps
                 '''
             }
             
