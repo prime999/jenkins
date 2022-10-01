@@ -2,8 +2,10 @@ pipeline {
     agent any
     stages {
         stage("Run docker compose") {
-            sh 'docker compose up -d --wait'
-            sh 'docker compose ps'
+            sh '''
+            docker compose up -d --wait
+            docker compose ps
+            '''
         }
     }
 }
